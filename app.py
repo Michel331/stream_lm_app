@@ -1,14 +1,17 @@
-API_KEY2 = "AIzaSyAWfT7LegzDMdwebnghQu3vjqYBZfJUdo0"
-API_METEO = "bd715056584f453cc48cb17af2e5e0bd"
 import joblib
 import numpy as np
 import streamlit as st
 import requests
 
+from dotenv import load_dotenv
+import os
+load_dotenv(".api_env")
+
 # -------------------------------------------------------------------------
 #                       PARAMÈTRES ET CHARGEMENT DU MODÈLE
 # -------------------------------------------------------------------------
-API_KEY = API_KEY2
+API_KEY = os.getenv("API_KEY")
+API_METEO = os.getenv("API_METEO")
 modele = joblib.load("mon_modele.joblib")
 
 # Tarif fixe (0.70 $/km) pour le modèle
